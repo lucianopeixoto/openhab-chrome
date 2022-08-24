@@ -7,7 +7,7 @@ chrome.contextMenus.create({
   title: "Local URL",
   contexts: ["browser_action"],
   onclick: function() {
-    localStorage["active_server_id"] = localStorage["local_server_id"];
+    chrome.storage.sync.set({"active_server": chrome.storage.sync.get(["local_server"]);
   }
 });
 
@@ -17,7 +17,7 @@ chrome.contextMenus.create({
   title: "Remote URL",
   contexts: ["browser_action"],
   onclick: function() {
-    localStorage["active_server_id"] = localStorage["remote_server_id"];
+    chrome.storage.sync.set({"active_server": chrome.storage.sync.get(["remote_server"]);
   }
 });
 
@@ -28,4 +28,4 @@ chrome.contextMenus.update("radioRemote", {
 chrome.contextMenus.update("radioLocal", {
   checked: true
 });
-localStorage["active_server_id"] = localStorage["local_server_id"];
+chrome.storage.sync.set({"active_server": chrome.storage.sync.get(["local_server"]);

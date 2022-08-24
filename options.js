@@ -1,10 +1,10 @@
 // Saves options to localStorage.
 function save_options() {
-  localStorage["local_server_id"] = $("#localserverid").val();
-  localStorage["remote_server_id"] = $("#remoteserverid").val();
-  localStorage["path_id"] = $("#pathid").val();
-  localStorage["width_id"] = $("#widthid").val();
-  localStorage["height_id"] = $("#heightid").val();
+  chrome.storage.sync.set({"local_server": $("#localserverid").val()});
+  chrome.storage.sync.set({"remote_server": $("#remoteserverid").val()});
+  chrome.storage.sync.set({"path_id": $("#pathid").val()});
+  chrome.storage.sync.set({"width_id": $("#widthid").val()});
+  chrome.storage.sync.set({"height_id": $("#heightid").val()});
 
   // Checks the Local URL radio on the context menu
   chrome.contextMenus.update("radioRemote", {
@@ -13,7 +13,7 @@ function save_options() {
   chrome.contextMenus.update("radioLocal", {
     checked: true
   });
-  localStorage["active_server_id"] = localStorage["local_server_id"];
+  chrome.storage.sync.set({"active_server": chrome.storage.sync.get(["local_server"])});
 
 	// Update status to let user know options were saved.
 	$("#status").html("Options Saved.");
@@ -24,11 +24,11 @@ function save_options() {
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
-  var local_server_id = localStorage["local_server_id"];
-  var remote_server_id = localStorage["remote_server_id"];
-  var path_id = localStorage["path_id"];
-  var width_id = localStorage["width_id"];
-  var height_id = localStorage["height_id"];
+  var local_server_id = chrome.storage.sync.get(["local_server"]);
+  var remote_server_id = chrome.storage.sync.get(["remote_server"]);
+  var path_id = chrome.storage.sync.get(["path_id"]);
+  var width_id = chrome.storage.sync.get(["width_id"]);
+  var height_id = chrome.storage.sync.get(["height_id"]);
 
   if(local_server_id){
     $("#localserverid").val(local_server_id);
