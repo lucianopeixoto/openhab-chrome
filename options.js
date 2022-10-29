@@ -1,24 +1,26 @@
-// Saves options to localStorage.
 function save_options() {
-	localStorage["URL"] = $("#URL").val();
+	localStorage["localurl"] = $("#localurl").val();
+	localStorage["remoteurl"] = $("#remoteurl").val();
 	localStorage["width"] = $("#width").val();
 	localStorage["height"] = $("#height").val();
 
-	// Update status to let user know options were saved.
 	$("#status").html("Options Saved.");
 	setTimeout(function() {
 		$("#status").html("");
 	}, 2000);
 }
 
-// Restores select box state to saved value from localStorage.
 function restore_options() {
-	var URL = localStorage["URL"];
+	var localurl = localStorage["localurl"];
+	var remoteurl = localStorage["remoteurl"];
 	var width = localStorage["width"];
 	var height = localStorage["height"];
 	
-	if(URL){
-		$("#URL").val(URL);
+	if(localurl){
+		$("#localurl").val(localurl);
+	}
+	if(remoteurl){
+		$("#remoteurl").val(remoteurl);
 	}
 	if(width){
 		$("#width").val(width);

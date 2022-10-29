@@ -7,7 +7,8 @@
   "version": "1.5",
 
   "options_ui": {
-    "page": "options.html"
+    "page": "options.html",
+    "browser_style": true
   },
   
   "icons": {
@@ -22,6 +23,5 @@
   },
 
   "permissions": [
-    "storage"
   ]
 }
