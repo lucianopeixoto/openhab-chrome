@@ -15,7 +15,7 @@ function restore_options() {
 	var remoteurl = localStorage["remoteurl"];
 	var width = localStorage["width"];
 	var height = localStorage["height"];
-	
+
 	if(localurl){
 		$("#localurl").val(localurl);
 	}
@@ -32,7 +32,6 @@ function restore_options() {
 
 $(document).ready(function(){
 	restore_options();
-	
 	$("#save").click(function(){
 		save_options();
 	});
